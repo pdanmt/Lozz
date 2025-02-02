@@ -8,6 +8,9 @@ import GoogleLogo from '../../../public/googleLogo.svg'
 export function LoginButton() {
     return (
         <Button
+            flexWrap='wrap'
+            h='auto'
+            p='0.5rem'
             bg='foreground'
             color='gray.600'
             display='flex'
@@ -18,7 +21,7 @@ export function LoginButton() {
             }}
             onClick={() => Login()}
         >
-            <Box w='25px' h='25px' pos='relative'>
+            <Box w={['20px', '20px', '25px', '25px']} h={['20px', '20px', '25px', '25px']} pos='relative'>
                 <Image src={GoogleLogo} alt="" fill />
             </Box>
             Entre com sua conta Google

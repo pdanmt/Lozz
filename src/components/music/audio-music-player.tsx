@@ -1,10 +1,11 @@
 'use client'
 
 import { MusicContext } from "@/context/music"
-import { Box, Flex, Skeleton, Text } from "@chakra-ui/react"
+import { Box, Flex, Text } from "@chakra-ui/react"
 import { Vibrant } from "node-vibrant/browser"
-import { ReactNode, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { MusicLoading } from "./music-loading"
+import Image from "next/image"
 
 interface AudioMusicPlayerProps {
     title: string
@@ -13,7 +14,7 @@ interface AudioMusicPlayerProps {
     artist: string
     id: string
     index: number
-    children: ReactNode
+    isFiltered?: boolean
 }
 
 export function AudioMusicPlayer({
@@ -22,8 +23,8 @@ export function AudioMusicPlayer({
     id,
     music,
     title,
-    children,
-    index
+    index,
+    isFiltered
 }: AudioMusicPlayerProps) {
     const {
         setMusicAudio,
@@ -31,6 +32,7 @@ export function AudioMusicPlayer({
         playPauseMusic,
         setMusicInfos,
         musicInfos,
+        filteredMusics
     } = MusicContext()
     const [coverColors, setCoverColors] = useState<string[]>()
 
@@ -90,6 +92,7 @@ export function AudioMusicPlayer({
 
     return (
         <Flex
+            display={filteredMusics.length === 0 ? 'flex' : isFiltered ? 'flex' : 'none'}
             direction='column'
             cursor='pointer'
             borderRadius='25px'
@@ -105,7 +108,14 @@ export function AudioMusicPlayer({
                 filter: 'brightness(1.1)'
             }}
         >
-            {children}
+            <Box w="150px" h="150px" pos="relative" bg=''>
+                <Image
+                    src={cover}
+                    alt={"Music cover"}
+                    fill
+                    style={{ objectFit: "fill", borderRadius: '25px' }}
+                />
+            </Box>
             <Box textAlign='center'>
                 <Text color='foreground' fontWeight='600'>
                     {title}

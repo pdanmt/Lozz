@@ -46,12 +46,14 @@ export default function AddMusic() {
         if (!data.musicFile || !data.coverFile) return
 
         if (data.musicFile.type !== 'audio/mpeg') {
+            CustomizedToast('error', 'O formato da música deve ser .mp3')
             console.error('O formato da música deve ser .mp3')
             return
         }
 
         if (data.musicFile.size / 1024 / 1024 > 5 || data.coverFile.size / 1024 / 1024 > 5) {
-            console.error('O arquivo ultrapassa o tamanho máximo permitido (5mb)')
+            CustomizedToast('error', 'Um dos arquivos ultrapassa o tamanho máximo permitido (5mb)')
+            console.error('Um dos arquivos ultrapassa o tamanho máximo permitido (5mb)')
             return
         }
 

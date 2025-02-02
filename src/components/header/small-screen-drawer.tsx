@@ -47,6 +47,7 @@ export function SmallScreenDrawer() {
                         display='flex'
                         flexDir='column'
                         justifyContent='space-between'
+                        gap='3rem'
                         alignItems='left'
                     >
                        <SideBarContent />

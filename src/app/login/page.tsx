@@ -4,11 +4,11 @@ import { LoginButton } from "@/components/login/login-button";
 export default function LoginPage() {
     return (
         <Flex
-            m='1rem auto'
+            m='auto'
             align='center'
             justify='space-around'
-            w={['90vw', '30vw']}
-            minH='600px'
+            w={['90vw', '90vw', '90vw', '500px']}
+            h='500px'
             p='1rem'
             border='2px solid'
             borderColor='gray.300'
@@ -16,6 +16,7 @@ export default function LoginPage() {
             bg='gray.500'
             direction='column'
             textAlign='center'
+            overflow='hidden'
         >
             <Box>
                 <Text

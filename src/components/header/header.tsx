@@ -1,9 +1,10 @@
-import { Flex, Input } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { Heart, Settings } from "lucide-react";
 import { ActionButtons } from "./action-button";
 import { UserPhotoAndName } from "./user-photo-and-name";
 import { UserContextProvider } from "@/context/user-context";
 import { SmallScreenDrawer } from "./small-screen-drawer";
+import { SearchInput } from "./search";
 
 export function Header() {
     return (
@@ -14,17 +15,7 @@ export function Header() {
             pt='1.5rem'
             gap='1rem'
         >
-            <Input
-                variant='unstyled'
-                placeholder="Busque uma música"
-                p='1rem'
-                w='25rem'
-                borderRadius='25px'
-                bg='gray.500'
-                border='2px solid transparent'
-                _focus={{ borderColor: 'gray.400' }}
-                _placeholder={{ color: 'gray.300' }}
-            />
+            <SearchInput />
             <Flex
                 alignItems='center'
                 gap='0.6rem'
