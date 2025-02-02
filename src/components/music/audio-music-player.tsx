@@ -1,10 +1,9 @@
 'use client'
 
 import { MusicContext } from "@/context/music"
-import { Box, Flex, Text } from "@chakra-ui/react"
+import { Box, Flex, Skeleton, Text } from "@chakra-ui/react"
 import { Vibrant } from "node-vibrant/browser"
 import { useEffect, useState } from "react"
-import { MusicLoading } from "./music-loading"
 import Image from "next/image"
 
 interface AudioMusicPlayerProps {
@@ -87,7 +86,14 @@ export function AudioMusicPlayer({
     }
 
     if (!coverColors) {
-        return <MusicLoading />
+        return <Skeleton
+            minW='165px'
+            minH='210px'
+            borderRadius='25px'
+            startColor='gray.500'
+            endColor='gray.450'
+            opacity={1}
+        />
     }
 
     return (
