@@ -1,16 +1,17 @@
 'use client'
 
-import { Flex } from "@chakra-ui/react";
+import { SignOut } from "@/services/firebase";
+import { Flex, FlexProps } from "@chakra-ui/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 
-interface FlexItemsProps {
+interface FlexItemsProps extends FlexProps {
     children: ReactNode
-    to: '/' | '/categories' | '/artists' | '/playlists' | '/log-out'
+    to: '/' | '/categories' | '/artists' | '/playlists' | '/login'
 }
 
-export function FlexItems({ children, to }: FlexItemsProps) {
+export function FlexItems({ children, to, ...props }: FlexItemsProps) {
     const pathname = usePathname()
 
     return (
@@ -24,6 +25,8 @@ export function FlexItems({ children, to }: FlexItemsProps) {
             as={Link}
             href={to}
             _hover={{ bg: 'gray.450' }}
+            onClick={to === '/login' ? () => SignOut() : undefined}
+            {...props}
         >
             {children}
         </Flex>

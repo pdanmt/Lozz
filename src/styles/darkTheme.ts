@@ -53,6 +53,7 @@ export const darkTheme = extendTheme({
         outlineThumb: '#CCD6DD40',
         foreground: '#fff',
         logo: '#EC6F1A',
+        destructive: '#cc0000'
     },
 
     fontSizes: {

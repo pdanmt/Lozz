@@ -8,8 +8,8 @@ export function SliderMusicControl({ ...props }: SliderProps) {
             </SliderTrack>
             <SliderThumb
                 bg='gray.300'
-                w={['7px', '10px']}
-                h={['7px', '10px']}
+                w={['7px', '7px', '8px', '10px']}
+                h={['7px', '7px', '8px', '10px']}
                 outline='7px solid'
                 outlineColor='outlineThumb'
             />

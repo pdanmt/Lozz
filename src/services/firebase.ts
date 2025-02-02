@@ -5,7 +5,8 @@ import {
     browserLocalPersistence,
     GoogleAuthProvider,
     setPersistence,
-    signInWithPopup
+    signInWithPopup,
+    signOut
 } from "firebase/auth"
 import { Dispatch, SetStateAction } from "react";
 
@@ -49,4 +50,19 @@ export function ThereIsAUserLoggedIn(
     })
 
     return unsubscribe
+}
+
+export async function SignOut() {
+    if (!auth.currentUser) {
+        CustomizedToast('error', 'Não há nenhum usuário logado.')
+        return
+    }
+
+    try {
+        await signOut(auth)
+        CustomizedToast('success', 'Sua conta foi deslogada!')
+    } catch (error) {
+        CustomizedToast('error', 'Erro ao sair da conta. Por favor, tente novamente.')
+        console.error(`Erro ao sair da conta. Erro: ${error}`)
+    }
 }

@@ -26,10 +26,10 @@ export function Footer() {
             gap='1rem'
         >
             {/* Capa e título */}
-            <Flex align='flex-start' gap={['0.2rem', '0.4rem', '0.6rem', '1rem']}>
+            <Flex align='center' gap={['0.2rem', '0.4rem', '0.6rem', '1rem']}>
                 <Box
-                    w={['40px', '40px', '45px', '58px']}
-                    h={['40px', '40px', '45px', '58px']}
+                    w={['35px', '35px', '45px', '58px']}
+                    h={['35px', '35px', '45px', '58px']}
                     pos='relative'
                 >
                     <Image
@@ -49,7 +49,7 @@ export function Footer() {
                 >
                     <Text
                         color='foreground'
-                        fontSize={['sm', 'sm', 'normal', 'lg']}
+                        fontSize={['0.8rem', '0.8rem', 'normal', 'lg']}
                         fontWeight='600'
                     >
                         {musicInfos?.title.slice(0, 5).concat('...') || 'Selecione uma música'}

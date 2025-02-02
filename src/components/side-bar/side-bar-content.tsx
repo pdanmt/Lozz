@@ -4,6 +4,7 @@ import Link from "next/link";
 import logo from '../../../public/logo.svg'
 import { Grid2x2, House, ListMusic, LogOut, Plus, UserRound } from "lucide-react"
 import { FlexItems } from "./flex-items"
+import { SignOut } from "@/services/firebase";
 
 export function SideBarContent() {
     return (
@@ -42,18 +43,10 @@ export function SideBarContent() {
                         <ListMusic />
                         Playlists
                     </FlexItems>
-                    <Flex
-                        alignItems='center'
-                        gap='0.5rem'
-                        p='1rem 0.5rem'
-                        borderRadius='15px'
-                        cursor='pointer'
-                        color={'gray.300'}
-                        _hover={{ bg: 'gray.450' }}
-                    >
-                        <LogOut />
+                    <FlexItems to='/login' color='destructive'>
+                        <LogOut color='#cc0000' />
                         Sair
-                    </Flex>
+                    </FlexItems>
                 </Flex>
             </Flex>
 
