@@ -4,7 +4,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-import { Box, Skeleton } from "@chakra-ui/react";
+import { Box, Flex, Skeleton, Text } from "@chakra-ui/react";
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 import { MusicSlide } from './slide';
@@ -22,6 +22,16 @@ export function MusicsSlides() {
             slideRef.current?.swiper.slideTo(musicInfos.index)
         }
     }, [musicInfos])
+
+    if (user && !musicLoading && allMusics.length === 0) {
+        return (
+            <Flex m='2rem auto'>
+                <Text fontSize='lg' fontWeight='600'>
+                    Você ainda não adicionou músicas...
+                </Text>
+            </Flex>
+        )
+    }
 
     return (
         <Box

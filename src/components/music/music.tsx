@@ -14,6 +14,10 @@ export function Music() {
         return <MusicLoading />
     }
 
+    if (allMusics.length === 0) {
+        return
+    }
+
     return (
         <Flex direction='column' gap='1rem'>
             <Text fontSize='xl' fontWeight='600' color='foreground'>
