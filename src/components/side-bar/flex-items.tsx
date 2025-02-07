@@ -8,7 +8,7 @@ import { ReactNode } from "react";
 
 interface FlexItemsProps extends FlexProps {
     children: ReactNode
-    to: '/' | '/categories' | '/artists' | '/playlists' | '/login'
+    to: '/' | '/musics/categories' | '/musics/artists' | '/musics/playlists' | '/login'
 }
 
 export function FlexItems({ children, to, ...props }: FlexItemsProps) {

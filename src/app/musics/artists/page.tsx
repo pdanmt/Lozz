@@ -5,49 +5,35 @@ import { Flex, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 
-export function CategoryItem() {
+export default function Artists() {
     const { allMusics } = MusicContext()
-    const categories = allMusics.map(({ category }) => category)
+    const categories = allMusics.map(({ artist }) => artist)
     const arrayUniqueCategories = Array.from(new Set(categories))
 
     return (
         <Flex wrap='wrap' gap='2rem' m='0 auto' justify='center'>
-            {arrayUniqueCategories.map((category) => {
-                const categoryCover = allMusics.find((music) => music.category === category)
-                const categoryLink = category.toLowerCase().normalize("NFD").replace(/[^a-zA-Zs]/g, "")
+            {arrayUniqueCategories.map((artist) => {
+                const artistCover = allMusics.find((music) => music.artist === artist)
+                const artistLink = artist.toLowerCase().normalize("NFD").replace(/[^a-zA-Zs]/g, "")
 
-                if (!categoryCover) {
+                if (!artistCover) {
                     return
                 }
 
                 return (
                     <Flex
-                        w='300px'
-                        h='300px'
+                        w={['250px', '250px', '300px']}
+                        h={['250px', '250px', '300px']}
                         pos='relative'
-                        key={category}
+                        key={artist}
                         cursor='pointer'
                         as={Link}
-                        href={`/categories/${categoryLink}`}
+                        href={`/musics/artists/${artistLink}`}
+                        transition='0.2s'
+                        _hover={{ filter: 'brightness(1.3)' }}
                     >
-                        <Text
-                            pos='absolute'
-                            w='100%'
-                            h='100%'
-                            zIndex='1'
-                            bg='#00000070'
-                            borderRadius='20px'
-                            textAlign='center'
-                            alignContent='center'
-                            fontSize='lg'
-                            fontWeight='600'
-                            letterSpacing='1px'
-                            _hover={{ bg: 'red' }}
-                        >
-                            {category}
-                        </Text>
                         <Image
-                            src={categoryCover.cover}
+                            src={artistCover.cover}
                             fill
                             alt=""
                             style={{
@@ -55,6 +41,21 @@ export function CategoryItem() {
                                 filter: 'blur(4px)',
                             }}
                         />
+
+                        <Text
+                            pos='absolute'
+                            w='100%'
+                            h='100%'
+                            bg='#00000070'
+                            borderRadius='20px'
+                            textAlign='center'
+                            alignContent='center'
+                            fontSize='lg'
+                            fontWeight='600'
+                            letterSpacing='1px'
+                        >
+                            {artist}
+                        </Text>
                     </Flex>
                 )
             })}

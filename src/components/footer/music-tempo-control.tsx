@@ -10,7 +10,7 @@ export function MusicTempoControl() {
         setMusicAudio,
         setMusicInfos,
         musicInfos,
-        allMusics
+        currentPlaylist
     } = MusicContext()
 
     const [timeValue, setTimeValue] = useState<number>(0)
@@ -39,9 +39,12 @@ export function MusicTempoControl() {
                     if (currentTime >= duration) {
                         clearInterval(intervalRef.current!)
 
-                        const thisMusicIndex = allMusics.findIndex(({ id }) => id === musicInfos?.id)
-                        const checkIfThereIsNextSong = thisMusicIndex + 1 === allMusics.length ? null : thisMusicIndex + 1
-                        const nextMusic = checkIfThereIsNextSong ? allMusics[checkIfThereIsNextSong] : null
+                        const thisMusicIndex =
+                            currentPlaylist.findIndex(({ id }) => id === musicInfos?.id) ?
+                                currentPlaylist.findIndex(({ id }) => id === musicInfos?.id) :
+                                -1
+                        const checkIfThereIsNextSong = thisMusicIndex + 1 === currentPlaylist.length ? null : thisMusicIndex + 1
+                        const nextMusic = checkIfThereIsNextSong !== null ? currentPlaylist[checkIfThereIsNextSong] : null
 
                         musicAudio.pause()
                         const audio = nextMusic ? new Audio(nextMusic.music) : null

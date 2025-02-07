@@ -1,6 +1,6 @@
 'use client'
 
-import { MusicContext } from "@/context/music";
+import { MusicBody, MusicContext } from "@/context/music";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import defaultCover from '../../../public/defaultCover.svg'

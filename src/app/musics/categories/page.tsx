@@ -22,19 +22,30 @@ export default function Categories() {
 
                 return (
                     <Flex
-                        w='300px'
-                        h='300px'
+                        w={['250px', '250px', '300px']}
+                        h={['250px', '250px', '300px']}
                         pos='relative'
                         key={category}
                         cursor='pointer'
                         as={Link}
-                        href={`/categories/${categoryLink}`}
+                        href={`/musics/categories/${categoryLink}`}
+                        transition='0.2s'
+                        _hover={{ filter: 'brightness(1.3)' }}
                     >
+                        <Image
+                            src={categoryCover.cover}
+                            fill
+                            alt=""
+                            style={{
+                                borderRadius: '20px',
+                                filter: 'blur(4px)',
+                            }}
+                        />
+
                         <Text
                             pos='absolute'
                             w='100%'
                             h='100%'
-                            zIndex='1'
                             bg='#00000070'
                             borderRadius='20px'
                             textAlign='center'
@@ -45,15 +56,6 @@ export default function Categories() {
                         >
                             {category}
                         </Text>
-                        <Image
-                            src={categoryCover.cover}
-                            fill
-                            alt=""
-                            style={{
-                                borderRadius: '20px',
-                                filter: 'blur(4px)',
-                            }}
-                        />
                     </Flex>
                 )
             })}

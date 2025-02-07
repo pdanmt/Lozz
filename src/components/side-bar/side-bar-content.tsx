@@ -31,15 +31,15 @@ export function SideBarContent() {
                         <House />
                         Home
                     </FlexItems>
-                    <FlexItems to="/categories">
+                    <FlexItems to="/musics/categories">
                         <Grid2x2 />
                         Categorias
                     </FlexItems>
-                    <FlexItems to="/artists">
+                    <FlexItems to="/musics/artists">
                         <UserRound />
                         Artistas
                     </FlexItems>
-                    <FlexItems to="/playlists">
+                    <FlexItems to="/musics/playlists">
                         <ListMusic />
                         Playlists
                     </FlexItems>

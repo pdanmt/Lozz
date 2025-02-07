@@ -2,6 +2,7 @@ import { MusicBody, MusicContext } from "@/context/music"
 import { Box, Button, Flex, Text } from "@chakra-ui/react"
 import { Pause, Play } from "lucide-react"
 import Image from "next/image"
+import { useEffect } from "react"
 
 export function MusicSlide({ artist, cover, id, music, title, index, category }: MusicBody) {
     const {
@@ -10,8 +11,14 @@ export function MusicSlide({ artist, cover, id, music, title, index, category }:
         setMusicAudio,
         musicInfos,
         playPauseMusic,
-        isPlaying
+        isPlaying,
+        allMusics,
+        setCurrentPlaylist
     } = MusicContext()
+
+    useEffect(() => {
+        setCurrentPlaylist(allMusics)
+    }, [allMusics])
 
     const isThisTheMusicPlaying = musicInfos?.id === id ? true : false
 

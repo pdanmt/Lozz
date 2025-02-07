@@ -26,7 +26,6 @@ export default function Home() {
   return (
     <Flex
       direction='column'
-      gap='2rem'
       m='0 0 11.5vh auto'
       w={['100%', '100%', '100%', '100%', '75%']}
       p={['0 0.5rem', '0 0.5rem', '0 0.5rem', '0 0.5rem', '0 2rem']}

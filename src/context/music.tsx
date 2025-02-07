@@ -21,10 +21,12 @@ interface MusicContextType {
     musicAudio: HTMLAudioElement | null
     allMusics: [] | MusicBody[]
     filteredMusics: [] | MusicBody[]
+    currentPlaylist: [] | MusicBody[]
     playPauseMusic: () => void
     setMusicAudio: Dispatch<SetStateAction<HTMLAudioElement | null>>
     setMusicInfos: Dispatch<SetStateAction<MusicBody | null>>
     setFilteredMusics: Dispatch<SetStateAction<[] | MusicBody[]>>
+    setCurrentPlaylist: Dispatch<SetStateAction<[] | MusicBody[]>>
 }
 
 export interface MusicBody {
@@ -47,6 +49,7 @@ export function MusicContextProvider({ children }: { children: ReactNode }) {
     const [musicLoading, setMusicLoading] = useState<boolean>(false)
     const [musicInfos, setMusicInfos] = useState<MusicBody | null>(null)
     const [allMusics, setAllMusics] = useState<MusicBody[] | []>([])
+    const [currentPlaylist, setCurrentPlaylist] = useState<MusicBody[] | []>([])
     const [filteredMusics, setFilteredMusics] = useState<MusicBody[] | []>([])
 
     useEffect(() => {
@@ -101,6 +104,8 @@ export function MusicContextProvider({ children }: { children: ReactNode }) {
             setMusicAudio,
             setMusicInfos,
             setFilteredMusics,
+            currentPlaylist,
+            setCurrentPlaylist
         }}>
             {children}
         </musicContext.Provider>

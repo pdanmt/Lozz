@@ -1,5 +1,5 @@
 import { MusicBody, MusicContext } from "@/context/music"
-import { Button, Box, Icon } from "@chakra-ui/react"
+import { Box, Icon } from "@chakra-ui/react"
 import { SkipBack, Pause, Play, SkipForward } from "lucide-react"
 import { FooterMusicControlButton } from "./footer-music-control-btn"
 
@@ -11,34 +11,47 @@ export function GoBackPlayForwardMusic() {
         musicAudio,
         isPlaying,
         setMusicAudio,
-        allMusics
+        currentPlaylist
     } = MusicContext()
 
     function skipOrGoBackMusic(type: 'skip' | 'goBack') {
-        const thisMusicIndex = allMusics.findIndex(({ id }) => id === musicInfos?.id)
+        const thisMusicIndex = currentPlaylist.findIndex(({ id }) => id === musicInfos?.id)
         const getMusic = () => {
             switch (type) {
                 case 'goBack':
                     const checkIfThereIsPrevSong = thisMusicIndex === 0 ? thisMusicIndex : thisMusicIndex - 1
-                    return allMusics[checkIfThereIsPrevSong]
+                    return currentPlaylist[checkIfThereIsPrevSong]
                 case 'skip':
-                    const checkIfThereIsNextSong = thisMusicIndex + 1 === allMusics.length ? thisMusicIndex : thisMusicIndex + 1
-                    return allMusics[checkIfThereIsNextSong]
+                    const checkIfThereIsNextSong = thisMusicIndex + 1 === currentPlaylist.length ? thisMusicIndex : thisMusicIndex + 1
+                    return currentPlaylist[checkIfThereIsNextSong]
             }
         }
 
         const music = getMusic()
 
-        if (musicAudio && allMusics[thisMusicIndex].id !== music.id) {
-            try {
-                musicAudio.pause()
-                musicAudio.currentTime = 0
+        if (musicAudio) {
+            if (currentPlaylist[thisMusicIndex]?.id !== music?.id) {
+                try {
+                    musicAudio.pause()
+                    musicAudio.currentTime = 0
 
-                const audio = new Audio(music.music)
-                setMusicAudio(audio)
-                setMusicInfos(music)
-            } catch (error) {
-                console.error(`Ocorreu um erro ao carregar esta música. Erro: ${error}`)
+                    const audio = new Audio(music.music)
+                    setMusicAudio(audio)
+                    setMusicInfos(music)
+                } catch (error) {
+                    console.error(`Ocorreu um erro ao carregar esta música. Erro: ${error}`)
+                }
+            } else {
+                try {
+                    musicAudio.pause()
+                    musicAudio.currentTime = 0
+
+                    const audio = new Audio(currentPlaylist[0].music)
+                    setMusicAudio(audio)
+                    setMusicInfos(currentPlaylist[0])
+                } catch (error) {
+                    console.error(`Ocorreu um erro ao carregar esta música. Erro: ${error}`)
+                }
             }
         }
     }

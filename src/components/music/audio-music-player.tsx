@@ -5,6 +5,7 @@ import { Box, Flex, Skeleton, Text } from "@chakra-ui/react"
 import { Vibrant } from "node-vibrant/browser"
 import { useEffect, useState } from "react"
 import Image from "next/image"
+import { PlayPauseMusic } from "@/utils/play-pause-music"
 
 interface AudioMusicPlayerProps {
     title: string
@@ -64,27 +65,14 @@ export function AudioMusicPlayer({
     const isThisTheMusicPlaying = musicInfos?.id === id ? true : false
 
     function handlePlayPauseMusic() {
-        if (!musicAudio) {
-            const audio = new Audio(music)
-            setMusicAudio(audio)
-            setMusicInfos({ title, music, cover, id, artist, index, category })
-            return
-        }
-
-        if (musicAudio && !isThisTheMusicPlaying) {
-            musicAudio.pause()
-
-            const audio = new Audio(music)
-            setMusicAudio(audio)
-
-            setMusicInfos({ title, cover, music, id, artist, index, category })
-            return
-        }
-
-        if (musicAudio && isThisTheMusicPlaying) {
-            playPauseMusic()
-            return
-        }
+        PlayPauseMusic({
+            isThisTheMusicPlaying,
+            music: { title, music, cover, id, artist, index, category },
+            musicAudio,
+            playPauseMusic,
+            setMusicAudio,
+            setMusicInfos
+        })
     }
 
     if (!coverColors) {

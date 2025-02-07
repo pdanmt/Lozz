@@ -4,7 +4,7 @@ import { MusicContext } from "@/context/music";
 import { Input } from "@chakra-ui/react";
 
 export function SearchInput() {
-    const { allMusics, setFilteredMusics } = MusicContext()
+    const { currentPlaylist, setFilteredMusics } = MusicContext()
 
     function handleFilterMusics(inputValue: string) {
         if (inputValue.length === 0) {
@@ -13,7 +13,7 @@ export function SearchInput() {
         }
 
         const value = inputValue.trim().toLowerCase()
-        const filteredMusics = allMusics.filter(({ title }) => title.toLowerCase().includes(value))
+        const filteredMusics = currentPlaylist.filter(({ title }) => title.toLowerCase().includes(value))
 
         setFilteredMusics(filteredMusics)
     }

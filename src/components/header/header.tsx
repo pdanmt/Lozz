@@ -12,7 +12,7 @@ export function Header() {
             display='flex'
             justify='space-between'
             align='center'
-            pt='1.5rem'
+            p='1.5rem 0 2rem'
             gap='1rem'
         >
             <SearchInput />
