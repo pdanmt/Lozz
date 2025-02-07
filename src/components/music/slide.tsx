@@ -3,7 +3,7 @@ import { Box, Button, Flex, Text } from "@chakra-ui/react"
 import { Pause, Play } from "lucide-react"
 import Image from "next/image"
 
-export function MusicSlide({ artist, cover, id, music, title, index }: MusicBody) {
+export function MusicSlide({ artist, cover, id, music, title, index, category }: MusicBody) {
     const {
         musicAudio,
         setMusicInfos,
@@ -19,7 +19,7 @@ export function MusicSlide({ artist, cover, id, music, title, index }: MusicBody
         if (!musicAudio) {
             const audio = new Audio(music)
             setMusicAudio(audio)
-            setMusicInfos({ title, music, cover, id, artist, index })
+            setMusicInfos({ title, music, cover, id, artist, index, category })
             return
         }
 
@@ -29,7 +29,7 @@ export function MusicSlide({ artist, cover, id, music, title, index }: MusicBody
             const audio = new Audio(music)
             setMusicAudio(audio)
 
-            setMusicInfos({ title, cover, music, id, artist, index })
+            setMusicInfos({ title, cover, music, id, artist, index, category })
             return
         }
 

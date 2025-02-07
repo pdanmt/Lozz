@@ -1,10 +1,8 @@
-import { MusicContextProvider } from "@/context/music"
 import { Box, Flex } from "@chakra-ui/react"
 import { Footer } from "@/components//footer/footer"
 import { Music } from "@/components/music/music"
 import { Header } from "@/components/header/header"
 import { MusicsSlides } from "@/components/music/musics-slides"
-import { UserContextProvider } from "@/context/user-context"
 
 export interface MusicFilesBody {
   id: string
@@ -33,21 +31,17 @@ export default function Home() {
       w={['100%', '100%', '100%', '100%', '75%']}
       p={['0 0.5rem', '0 0.5rem', '0 0.5rem', '0 0.5rem', '0 2rem']}
     >
-      <UserContextProvider>
-        <MusicContextProvider>
-          <Header />
-          <Box
-            display='flex'
-            flexDir='column'
-            gap='2rem'
-            minH='85vh'
-          >
-            <MusicsSlides />
-            <Music />
-          </Box>
-          <Footer />
-        </MusicContextProvider>
-      </UserContextProvider>
+      <Header />
+      <Box
+        display='flex'
+        flexDir='column'
+        gap='2rem'
+        minH='85vh'
+      >
+        <MusicsSlides />
+        <Music />
+      </Box>
+      <Footer />
     </Flex>
   )
 }

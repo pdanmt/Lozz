@@ -75,7 +75,7 @@ export function MusicsSlides() {
                     </SwiperSlide>
                 ))}
 
-                {!musicLoading && user && allMusics.map(({ cover, id, title, artist, music, index }) => (
+                {!musicLoading && user && allMusics.map(({ cover, id, title, artist, music, index, category }) => (
                     <SwiperSlide
                         key={id}
                         className='slide'
@@ -87,6 +87,7 @@ export function MusicsSlides() {
                             title={title}
                             music={music}
                             index={index}
+                            category={category}
                         />
                     </SwiperSlide>
                 ))}

@@ -47,7 +47,8 @@ export function Music() {
                         id,
                         index,
                         music,
-                        title
+                        title,
+                        category
                     }) => <AudioMusicPlayer
                         cover={cover}
                         id={id}
@@ -56,6 +57,7 @@ export function Music() {
                         title={title}
                         index={index}
                         key={id}
+                        category={category}
                         isFiltered={filteredMusics.find((music) => music.id === id) ? true : false}
                     />)
                 }

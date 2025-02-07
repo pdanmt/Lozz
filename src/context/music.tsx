@@ -7,7 +7,6 @@ import {
     createContext,
     Dispatch,
     ReactNode,
-    RefObject,
     SetStateAction,
     useContext,
     useEffect,
@@ -35,6 +34,7 @@ export interface MusicBody {
     artist: string
     id: string
     index: number
+    category: string
 }
 
 export const musicContext = createContext({} as MusicContextType)

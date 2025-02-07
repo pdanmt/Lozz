@@ -11,6 +11,7 @@ interface AudioMusicPlayerProps {
     cover: string
     music: string
     artist: string
+    category: string
     id: string
     index: number
     isFiltered?: boolean
@@ -23,6 +24,7 @@ export function AudioMusicPlayer({
     music,
     title,
     index,
+    category,
     isFiltered
 }: AudioMusicPlayerProps) {
     const {
@@ -65,7 +67,7 @@ export function AudioMusicPlayer({
         if (!musicAudio) {
             const audio = new Audio(music)
             setMusicAudio(audio)
-            setMusicInfos({ title, music, cover, id, artist, index })
+            setMusicInfos({ title, music, cover, id, artist, index, category })
             return
         }
 
@@ -75,7 +77,7 @@ export function AudioMusicPlayer({
             const audio = new Audio(music)
             setMusicAudio(audio)
 
-            setMusicInfos({ title, cover, music, id, artist, index })
+            setMusicInfos({ title, cover, music, id, artist, index, category })
             return
         }
 

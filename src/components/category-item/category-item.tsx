@@ -5,7 +5,7 @@ import { Flex, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Categories() {
+export function CategoryItem() {
     const { allMusics } = MusicContext()
     const categories = allMusics.map(({ category }) => category)
     const arrayUniqueCategories = Array.from(new Set(categories))
